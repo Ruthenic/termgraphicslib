@@ -1,4 +1,20 @@
 from canvas import *
+def rayCast(P0,P1,lev):
+    length = 0
+    ocor = line_coords(P0, P1)
+    for i in ocor:
+        if not lev[i[1]][i[0]] == "w":
+            length+=1
+        else:
+            break
+    return length
+def drawLines(lens):
+    n=0
+    srn = init_default_canvas()
+    for i in lens:
+        srn = drawline([n,0+int(i/2)],[n,15-int(i/2)],[255,0,0],canvas=srn)
+        n+=1
+    return srn
 lev=[]
 with open('map.txt') as f:
     for line in f:
@@ -18,61 +34,24 @@ for i in lev:
         pass
     py+=1
 dire='n'
-rayx,rayy=px,py
+pc = [px,py]
 if dire=='n':
     #ray(s) should be facing north
-    lengthone = 0
-    lengthtwo = 0
-    lengththree = 0
-    lengthfour = 0
-    lengthfive = 0
-    lengthsix = 0
-    lengthseven = 0
-    lengtheight = 0
-    lengthnine = 0
-    while lev[rayy][rayx-7] != 'w':
-        lengthone+=1
-        rayy-=1
-    rayy=py
-    while lev[rayy][rayx-6] != 'w':
-        lengthtwo+=1
-        rayy-=1
-    rayy=py
-    while lev[rayy][rayx-5] != 'w':
-        lengththree+=1
-        rayy-=1
-    while lev[rayy][rayx-4] != 'w':
-        lengthfour+=1
-        rayy-=1
-    rayy=py
-    while lev[rayy][rayx-3] != 'w':
-        lengthfive+=1
-        rayy-=1
-    rayy=py
-    while lev[rayy][rayx-2] != 'w':
-        lengthsix+=1
-        rayy-=1
-    while lev[rayy][rayx-1] != 'w':
-        lengthseven+=1
-        rayy-=1
-    rayy=py
-    while lev[rayy][rayx] != 'w':
-        lengtheight+=1
-        rayy-=1
-    rayy=py
-    while lev[rayy][rayx+1] != 'w':
-        lengthnine+=1
-        rayy-=1
-    print(lengthone,lengthtwo,lengththree)
+    lengthnegsix = rayCast(pc, [px-6, 0],lev)
+    lengthnegfiv = rayCast(pc, [px-5, 0],lev)
+    lengthnegfor = rayCast(pc, [px-4, 0],lev)
+    lengthnegthr = rayCast(pc, [px-3, 0],lev)
+    lengthnegtwo = rayCast(pc, [px-2, 0],lev)
+    lengthnegone = rayCast(pc, [px-1, 0],lev)
+    lengthzero = rayCast(pc, [px, 0],lev)
+    lengthone = rayCast(pc, [px+1, 0],lev)
+    lengthtwo = rayCast(pc, [px+2, 0],lev)
+    lengththr = rayCast(pc, [px+3, 0],lev)
+    lengthfor = rayCast(pc, [px+4, 0],lev)
+    lengthfiv = rayCast(pc, [px+5, 0],lev)
+    lengthsix = rayCast(pc, [px+6, 0],lev)
+    #print(lengthone,lengthtwo,lengththree)
     for i in lev:
         print(i)
-srn = drawline([0,0+int(lengthone/2)],[0,15-int(lengthone/2)],[255,0,0])
-srn = drawline([1,0+int(lengthtwo/2)],[1,15-int(lengthtwo/2)],[255,0,0],canvas=srn)
-srn = drawline([2,0+int(lengththree/2)],[2,15-int(lengththree/2)],[255,0,0],canvas=srn)
-srn = drawline([3,0+int(lengthfour/2)],[3,15-int(lengthfour/2)],[255,0,0],canvas=srn)
-srn = drawline([4,0+int(lengthfive/2)],[4,15-int(lengthfive/2)],[255,0,0],canvas=srn)
-srn = drawline([5,0+int(lengthsix/2)],[5,15-int(lengthsix/2)],[255,0,0],canvas=srn)
-srn = drawline([6,0+int(lengthseven/2)],[6,15-int(lengthseven/2)],[255,0,0],canvas=srn)
-srn = drawline([7,0+int(lengtheight/2)],[7,15-int(lengtheight/2)],[255,0,0],canvas=srn)
-srn = drawline([8,0+int(lengthnine/2)],[8,15-int(lengthnine/2)],[255,0,0],canvas=srn)
+srn = drawLines([lengthnegsix,lengthnegfiv,lengthnegfor,lengthnegthr,lengthnegtwo,lengthnegone,lengthzero,lengthone,lengthtwo,lengththr,lengthfor,lengthfiv,lengthsix])
 draw(srn)
