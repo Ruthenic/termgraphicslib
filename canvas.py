@@ -41,7 +41,7 @@ def putpixel(x,y,color,canvas=[[" "," "," "," "," "," "," "," "," "," "," "," ",
     try:
         canvas[y][x] = color
     except:
-        print('error in plotting line, continuing anyway')
+        print('error in plotting pixel, continuing anyway')
     return canvas
 
 def draw(canvas):
@@ -76,7 +76,7 @@ def drawline(P0, P1, color, canvas=[[" "," "," "," "," "," "," "," "," "," "," "
     y2=P1[1]
     dx = (x2 - x1)
     dy = (y2 - y1)
-    print(dx,dy)
+    #print(dx,dy)
     if abs(dx) >= abs(dy):
         step = abs(dx)
     else:
