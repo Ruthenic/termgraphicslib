@@ -1,4 +1,4 @@
-from canvas import *
+from termgraphicslib.canvas import *
 def rayCast(P0,P1,lev):
     length = 0
     ocor = line_coords(P0, P1)
