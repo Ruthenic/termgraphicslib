@@ -1,4 +1,3 @@
-
 from canvas import *
 def rayCast(P0,P1,lev):
     length = 0
@@ -13,7 +12,7 @@ def drawLines(lens):
     n=0
     srn = init_default_canvas()
     for i in lens:
-        srn = drawline([n,0+int(i/2)],[n,15-int(i/2)],[255,0,0],canvas=srn)
+        srn = drawline([n,0+int(i/2)],[n,15-int(i/2)],[255-int(i*10),0,0],canvas=srn)
         n+=1
     return srn
 lev=[]
@@ -91,7 +90,6 @@ while True:
         for i in lev:
             print(i)
         print(dire)
-
     if dire=='e':
         #probably not the best of ideas to draw all length values from the first row but /shrug
         lengthnegsix = rayCast(pc, [len(lev[0])-1, py-6],lev)
@@ -133,6 +131,9 @@ while True:
                 py-=1
             if dire=='e':
                 px-=1
+        elif lev[py][px] == 'x':
+            print("You found the end!")
+            exit()
         else:
             if dire=='n':
                 temp=py+1
