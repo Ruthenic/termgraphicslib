@@ -1,5 +1,5 @@
-import os,math
-clear = lambda: os.system('clear')
+import math
+clear = lambda: print('\033[2J') #do i even use this in the code anywhere? lol
 def interpolate(i0,d0,i1,d1):
     if i0 == i1:
         return [d0]
