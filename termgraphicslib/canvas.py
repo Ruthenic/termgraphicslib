@@ -76,7 +76,6 @@ def drawline(P0, P1, color, canvas=init_default_canvas()):
         step = abs(dx)
     else:
         step = abs(dy)
-    print(step)
     dx = dx / step
     dy = dy / step
     x = x1
